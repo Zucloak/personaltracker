@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken Mosquera's Chronicle</title> <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://example.com/your-favicon.png" type="image/png"> </head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="site-title">
+                Ken Mosquera's Chronicle
+            </h1>
+            <div class="player-stats-header">
+                <span class="stat-item gold-display">
+                    <img src="https://example.com/gold-stack-icon.png" alt="Gold" class="stat-icon"> <span id="gold-amount">0</span>
+                </span>
+                <span class="stat-item level-display-header">
+                    <img src="https://example.com/level-star-icon.png" alt="Level" class="stat-icon"> LVL: <span id="current-level-header">1</span>
+                </span>
+            </div>
+            <button id="nav-toggle-btn" class="nav-toggle-btn" aria-label="Toggle Navigation" aria-expanded="false">
+                <span></span><span></span><span></span> </button>
+        </div>
+        <nav class="top-nav" id="top-navigation">
+            <a href="#quests" class="nav-link">Quests</a>
+            <a href="#habits" class="nav-link">Habits</a>
+            <a href="#progress" class="nav-link">Progress</a>
+            <a href="#achievements-section" class="nav-link">Feats</a>
+            <a href="#customization" class="nav-link">Armory</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="quests" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Active Quests</span></h2>
+            <div class="section-actions">
+                <button id="add-quest-modal-btn" class="action-button add-button">
+                     <img src="https://example.com/add-scroll-icon.png" alt="" class="button-icon"> New Quest </button>
+            </div>
+            <div id="quest-list" class="quest-list">
+                </div>
+        </section>
+
+        <section id="habits" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Habit Inventory</span></h2>
+            <div class="section-actions">
+                <button id="add-habit-modal-btn" class="action-button add-button">
+                    <img src="https://example.com/add-rune-icon.png" alt="" class="button-icon"> New Habit </button>
+            </div>
+            <div id="habit-grid" class="habit-grid">
+                </div>
+        </section>
+
+        <section id="progress" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Hero's Advancement</span></h2>
+            <div class="level-area">
+                <div class="level-display-main-wrapper">
+                    <div class="level-display-main">LVL <span id="player-level">1</span></div>
+                </div>
+                <div class="xp-bar-container">
+                    <div class="xp-bar" id="player-xp-bar" style="width: 0%;">
+                        <span class="xp-text"><span id="current-xp">0</span> / <span id="xp-to-next-level">100</span> XP</span>
+                    </div>
+                </div>
+                <p id="level-up-message" class="level-up-message"></p>
+            </div>
+        </section>
+
+        <section id="achievements-section" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Feats of Valor</span></h2>
+            <div id="achievements-log" class="achievements-log">
+                <ul>
+                    </ul>
+            </div>
+        </section>
+
+        <section id="customization" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Armory (Themes)</span></h2>
+            <p class="customization-notice">Unlock new appearances by proving your mettle!</p>
+            <div id="theme-options-grid" class="theme-options-grid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; <span id="currentYear"></span> Ken Mosquera - Adventure Awaits!</p>
+        <button id="reset-data-btn" class="action-button reset-button">Reset All Progress</button>
+    </footer>
+
+    <div id="add-quest-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-quest-modal">&times;</span>
+            <h3 class="modal-title">Forge a New Quest</h3>
+            <label for="quest-name-input">Quest Name:</label>
+            <input type="text" id="quest-name-input" placeholder="e.g., Defeat the Slime King">
+            <label for="quest-desc-input">Description:</label>
+            <textarea id="quest-desc-input" placeholder="e.g., Clear out the basement"></textarea>
+            <label for="quest-gold-input">Gold Reward:</label>
+            <input type="number" id="quest-gold-input" value="10" min="0">
+            <label for="quest-xp-input">XP Reward:</label>
+            <input type="number" id="quest-xp-input" value="20" min="0">
+            <label class="checkbox-label" for="quest-priority-input">
+                <input type="checkbox" id="quest-priority-input"> Mark as Urgent Quest
+            </label>
+            <button id="submit-quest-btn" class="action-button add-button">Add Quest</button>
+        </div>
+    </div>
+
+    <div id="add-habit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-habit-modal">&times;</span>
+            <h3 class="modal-title">Cultivate a New Habit</h3>
+            <label for="habit-name-input">Habit Name:</label>
+            <input type="text" id="habit-name-input" placeholder="e.g., Morning Meditation">
+            <label for="habit-icon-input">Icon Filename (in local images/ or full URL):</label>
+            <input type="text" id="habit-icon-input" value="images/gem_icon.png" placeholder="e.g., images/sword_icon.png or https://example.com/icon.png">
+             <label for="habit-target-input">Daily Target:</label>
+            <input type="number" id="habit-target-input" value="1" min="1">
+            <button id="submit-habit-btn" class="action-button add-button">Add Habit</button>
+        </div>
+    </div>
+
+    <audio id="sound-quest-complete" src="https://example.com/sounds/quest_complete.mp3" preload="auto"></audio>
+    <audio id="sound-level-up" src="https://example.com/sounds/level_up.mp3" preload="auto"></audio>
+    <audio id="sound-gold-gain" src="https://example.com/sounds/gold_gain.mp3" preload="auto"></audio>
+    <audio id="sound-habit-track" src="https://example.com/sounds/habit_track.mp3" preload="auto"></audio>
+    <audio id="sound-click" src="https://example.com/sounds/ui_click.mp3" preload="auto"></audio>
+    <audio id="sound-achievement" src="https://example.com/sounds/achievement_unlocked.mp3" preload="auto"></audio>
+    <audio id="sound-modal-open" src="https://example.com/sounds/modal_open.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
