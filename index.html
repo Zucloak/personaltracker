@@ -3,132 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ken Mosquera's Chronicle</title> <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Hero's Chronicle - Advanced</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://example.com/your-favicon.png" type="image/png"> </head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1670/1670906.png" type="image/png"> </head>
 <body>
     <header class="main-header">
         <div class="header-content">
             <h1 class="site-title">
-                Ken Mosquera's Chronicle
+                <img src="https://cdn-icons-png.flaticon.com/512/3208/3208401.png" alt="HC" class="site-logo-icon"> Hero's Chronicle
             </h1>
             <div class="player-stats-header">
                 <span class="stat-item gold-display">
-                    <img src="https://example.com/gold-stack-icon.png" alt="Gold" class="stat-icon"> <span id="gold-amount">0</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/138/138292.png" alt="Gold Icon" class="stat-icon permanent-icon"> <span id="gold-amount">0</span>
                 </span>
                 <span class="stat-item level-display-header">
-                    <img src="https://example.com/level-star-icon.png" alt="Level" class="stat-icon"> LVL: <span id="current-level-header">1</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1021/1021100.png" alt="Level Icon" class="stat-icon permanent-icon"> LVL: <span id="current-level-header">1</span>
                 </span>
+                 <button id="sound-toggle-btn" class="action-button sound-toggle-btn" title="Toggle Sound Effects">
+                    <img src="https://cdn-icons-png.flaticon.com/512/59/59284.png" alt="Sound On" id="sound-icon" class="button-icon permanent-icon"> </button>
             </div>
             <button id="nav-toggle-btn" class="nav-toggle-btn" aria-label="Toggle Navigation" aria-expanded="false">
-                <span></span><span></span><span></span> </button>
+                <span></span><span></span><span></span>
+            </button>
         </div>
         <nav class="top-nav" id="top-navigation">
+            <a href="#character-sheet" class="nav-link">Character</a>
             <a href="#quests" class="nav-link">Quests</a>
+            <a href="#side-quests-section" class="nav-link">Side Quests</a>
             <a href="#habits" class="nav-link">Habits</a>
-            <a href="#progress" class="nav-link">Progress</a>
+            <a href="#captains-log" class="nav-link">Captain's Log</a>
+            <a href="#pomodoro-timer-section" class="nav-link">Pomodoro</a>
+            <a href="#inventory" class="nav-link">Inventory</a>
             <a href="#achievements-section" class="nav-link">Feats</a>
             <a href="#customization" class="nav-link">Armory</a>
         </nav>
     </header>
 
     <main class="container">
+        <section id="character-sheet" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Character Sheet</span></h2>
+            <div class="character-sheet-grid">
+                <div class="char-stats-panel">
+                    <h3 class="subsection-title">Hero Stats</h3>
+                    <p>Level: <span id="char-level" class="char-stat-value">1</span> <img src="https://cdn-icons-png.flaticon.com/512/1021/1021100.png" alt="Level Icon" class="inline-icon permanent-icon"></p> <p>Experience: <span id="char-xp" class="char-stat-value">0</span> / <span id="char-xp-next" class="char-stat-value">100</span> XP <img src="https://cdn-icons-png.flaticon.com/512/3004/3004096.png" alt="XP Icon" class="inline-icon permanent-icon"></p> <div class="xp-bar-container small-xp-bar">
+                        <div class="xp-bar" id="char-xp-bar-visual" style="width: 0%;"></div>
+                    </div>
+                    <p>Gold: <span id="char-gold" class="char-stat-value">0</span> <img src="https://cdn-icons-png.flaticon.com/512/138/138292.png" alt="Gold Icon" class="inline-icon permanent-icon"></p> <p>Quests Completed: <span id="char-quests-completed" class="char-stat-value">0</span></p>
+                    <p>Longest Habit Streak: <span id="char-longest-streak" class="char-stat-value">0</span> days</p>
+                </div>
+                <div class="char-theme-panel">
+                    <h3 class="subsection-title">Current Armory</h3>
+                    <div id="char-current-theme-preview" class="theme-preview large-preview">
+                        </div>
+                    <p>Theme: <span id="char-current-theme-name" class="char-stat-value">ShadowScribe</span></p>
+                </div>
+                 <div class="char-recent-achievements">
+                     <h3 class="subsection-title">Recent Feats</h3>
+                     <ul id="char-recent-feats-list">
+                         <li>No recent feats.</li>
+                     </ul>
+                 </div>
+            </div>
+        </section>
+
         <section id="quests" class="content-section panel-style">
-            <h2 class="section-title ornate-title"><span>Active Quests</span></h2>
+            <h2 class="section-title ornate-title"><span>Main Quests</span></h2>
             <div class="section-actions">
                 <button id="add-quest-modal-btn" class="action-button add-button">
-                     <img src="https://example.com/add-scroll-icon.png" alt="" class="button-icon"> New Quest </button>
+                     <img src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Add Icon" class="button-icon permanent-icon"> New Main Quest </button>
             </div>
-            <div id="quest-list" class="quest-list">
-                </div>
+            <div id="quest-list" class="quest-list"></div>
+        </section>
+
+        <section id="side-quests-section" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Side Quests (Hobbies & Learning)</span></h2>
+            <div class="section-actions">
+                 <button id="add-side-quest-modal-btn" class="action-button add-button">
+                     <img src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Add Icon" class="button-icon permanent-icon"> Custom Side Quest </button>
+            </div>
+            <div class="predefined-side-quests">
+                <h3 class="subsection-title">Suggested Side Quests:</h3>
+                <div id="predefined-side-quest-list" class="side-quest-suggestion-grid">
+                    </div>
+            </div>
+            <h3 class="subsection-title" style="margin-top: 30px;">Active Side Quests:</h3>
+            <div id="active-side-quest-list" class="quest-list">
+                 <p class="empty-state">No active side quests.</p>
+            </div>
         </section>
 
         <section id="habits" class="content-section panel-style">
             <h2 class="section-title ornate-title"><span>Habit Inventory</span></h2>
             <div class="section-actions">
                 <button id="add-habit-modal-btn" class="action-button add-button">
-                    <img src="https://example.com/add-rune-icon.png" alt="" class="button-icon"> New Habit </button>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Add Icon" class="button-icon permanent-icon"> New Habit </button>
             </div>
-            <div id="habit-grid" class="habit-grid">
-                </div>
+            <div id="habit-grid" class="habit-grid"></div>
         </section>
 
-        <section id="progress" class="content-section panel-style">
-            <h2 class="section-title ornate-title"><span>Hero's Advancement</span></h2>
-            <div class="level-area">
-                <div class="level-display-main-wrapper">
-                    <div class="level-display-main">LVL <span id="player-level">1</span></div>
+        <section id="captains-log" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Captain's Log</span></h2>
+            <div class="log-entry-area">
+                <h3 class="subsection-title">Today's Log - <span id="current-log-date"></span></h3>
+                <div class="mood-selector">
+                    <p>How art thou feeling, Hero?</p>
+                    <button class="mood-btn" data-mood="great" title="Great"><img src="https://cdn-icons-png.flaticon.com/512/1687/1687546.png" alt="Great Mood" class="permanent-icon"></button> <button class="mood-btn" data-mood="good" title="Good"><img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" alt="Good Mood" class="permanent-icon"></button> <button class="mood-btn" data-mood="ok" title="Okay"><img src="https://cdn-icons-png.flaticon.com/512/42/42772.png" alt="Okay Mood" class="permanent-icon"></button> <button class="mood-btn" data-mood="bad" title="Bad"><img src="https://cdn-icons-png.flaticon.com/512/742/742765.png" alt="Bad Mood" class="permanent-icon"></button> <button class="mood-btn" data-mood="awful" title="Awful"><img src="https://cdn-icons-png.flaticon.com/512/1687/1687577.png" alt="Awful Mood" class="permanent-icon"></button> <p>Selected Mood: <span id="selected-mood-display">None</span></p>
                 </div>
-                <div class="xp-bar-container">
-                    <div class="xp-bar" id="player-xp-bar" style="width: 0%;">
-                        <span class="xp-text"><span id="current-xp">0</span> / <span id="xp-to-next-level">100</span> XP</span>
-                    </div>
+                <textarea id="journal-entry" placeholder="Pen down thy thoughts, victories, and reflections for the day..."></textarea>
+                <button id="save-log-entry-btn" class="action-button add-button">Save Today's Log</button>
+            </div>
+            <div class="past-logs-area">
+                <h3 class="subsection-title">Previous Logs</h3>
+                <select id="past-log-dates-dropdown"></select>
+                <div id="past-log-display" class="past-log-content">Select a date to view the log.</div>
+            </div>
+        </section>
+
+        <section id="pomodoro-timer-section" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Focus Timer</span></h2>
+            <div class="pomodoro-timer">
+                <div id="pomodoro-display" class="timer-display">25:00</div>
+                <div id="pomodoro-status" class="timer-status">Work Session</div>
+                <div class="pomodoro-controls">
+                    <button id="pomodoro-start-btn" class="action-button"><img src="https://cdn-icons-png.flaticon.com/512/0/39.png" class="button-icon permanent-icon"> Start</button> <button id="pomodoro-pause-btn" class="action-button"><img src="https://cdn-icons-png.flaticon.com/512/0/537.png" class="button-icon permanent-icon"> Pause</button> <button id="pomodoro-reset-btn" class="action-button"><img src="https://cdn-icons-png.flaticon.com/512/5820/5820403.png" class="button-icon permanent-icon"> Reset</button> </div>
+                <div class="pomodoro-settings">
+                    <label for="work-duration">Work (min):</label>
+                    <input type="number" id="work-duration" value="25" min="1">
+                    <label for="break-duration">Break (min):</label>
+                    <input type="number" id="break-duration" value="5" min="1">
                 </div>
-                <p id="level-up-message" class="level-up-message"></p>
+            </div>
+            <div class="digital-clock">
+                Current Time: <span id="current-time-clock"></span>
+            </div>
+        </section>
+
+        <section id="inventory" class="content-section panel-style">
+            <h2 class="section-title ornate-title"><span>Trophy Case & Inventory</span></h2>
+            <p class="customization-notice">Collect rare items and trophies from your grand achievements and diligent habits!</p>
+            <div id="inventory-grid" class="inventory-grid">
+                <p class="empty-state">Your inventory is currently empty. Complete feats to earn trophies!</p>
             </div>
         </section>
 
         <section id="achievements-section" class="content-section panel-style">
             <h2 class="section-title ornate-title"><span>Feats of Valor</span></h2>
-            <div id="achievements-log" class="achievements-log">
-                <ul>
-                    </ul>
+            <div class="section-actions">
+                 <button id="add-custom-achievement-modal-btn" class="action-button add-button">
+                     <img src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Add Icon" class="button-icon permanent-icon"> Add Custom Feat </button>
             </div>
+            <div id="achievements-log" class="achievements-log"><ul></ul></div>
         </section>
 
         <section id="customization" class="content-section panel-style">
             <h2 class="section-title ornate-title"><span>Armory (Themes)</span></h2>
             <p class="customization-notice">Unlock new appearances by proving your mettle!</p>
-            <div id="theme-options-grid" class="theme-options-grid">
-                </div>
+            <div id="theme-options-grid" class="theme-options-grid"></div>
         </section>
     </main>
 
     <footer class="main-footer">
-        <p>&copy; <span id="currentYear"></span> Ken Mosquera - Adventure Awaits!</p>
+        <div class="social-links">
+            <a href="https://twitter.com/yourprofile" target="_blank" title="Twitter/X"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+            <a href="https://github.com/yourprofile" target="_blank" title="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
+        </div>
+        <p>&copy; <span id="currentYear"></span> Your Name Here - Your Legend Awaits!</p>
         <button id="reset-data-btn" class="action-button reset-button">Reset All Progress</button>
     </footer>
 
-    <div id="add-quest-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-quest-modal">&times;</span>
-            <h3 class="modal-title">Forge a New Quest</h3>
-            <label for="quest-name-input">Quest Name:</label>
-            <input type="text" id="quest-name-input" placeholder="e.g., Defeat the Slime King">
-            <label for="quest-desc-input">Description:</label>
-            <textarea id="quest-desc-input" placeholder="e.g., Clear out the basement"></textarea>
-            <label for="quest-gold-input">Gold Reward:</label>
-            <input type="number" id="quest-gold-input" value="10" min="0">
-            <label for="quest-xp-input">XP Reward:</label>
-            <input type="number" id="quest-xp-input" value="20" min="0">
-            <label class="checkbox-label" for="quest-priority-input">
-                <input type="checkbox" id="quest-priority-input"> Mark as Urgent Quest
-            </label>
-            <button id="submit-quest-btn" class="action-button add-button">Add Quest</button>
-        </div>
-    </div>
+    <div id="add-quest-modal" class="modal"><div class="modal-content">
+        <span class="close-btn" data-modal-id="add-quest-modal">&times;</span>
+        <h3 class="modal-title">Forge a New Main Quest</h3>
+        <label for="quest-name-input">Quest Name:</label><input type="text" id="quest-name-input" placeholder="e.g., Slay the Dragon of Procrastination">
+        <label for="quest-desc-input">Description:</label><textarea id="quest-desc-input" placeholder="e.g., Complete major project milestone"></textarea>
+        <label for="quest-gold-input">Gold Reward:</label><input type="number" id="quest-gold-input" value="50" min="0">
+        <label for="quest-xp-input">XP Reward:</label><input type="number" id="quest-xp-input" value="100" min="0">
+        <label class="checkbox-label"><input type="checkbox" id="quest-priority-input"> Mark as Urgent</label>
+        <button id="submit-quest-btn" class="action-button add-button">Add Main Quest</button>
+    </div></div>
 
-    <div id="add-habit-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-habit-modal">&times;</span>
-            <h3 class="modal-title">Cultivate a New Habit</h3>
-            <label for="habit-name-input">Habit Name:</label>
-            <input type="text" id="habit-name-input" placeholder="e.g., Morning Meditation">
-            <label for="habit-icon-input">Icon Filename (in local images/ or full URL):</label>
-            <input type="text" id="habit-icon-input" value="images/gem_icon.png" placeholder="e.g., images/sword_icon.png or https://example.com/icon.png">
-             <label for="habit-target-input">Daily Target:</label>
-            <input type="number" id="habit-target-input" value="1" min="1">
-            <button id="submit-habit-btn" class="action-button add-button">Add Habit</button>
-        </div>
-    </div>
+    <div id="add-side-quest-modal" class="modal"><div class="modal-content">
+        <span class="close-btn" data-modal-id="add-side-quest-modal">&times;</span>
+        <h3 class="modal-title">Embark on a Side Quest</h3>
+        <label for="side-quest-name-input">Side Quest Name:</label><input type="text" id="side-quest-name-input" placeholder="e.g., Master a new Recipe">
+        <label for="side-quest-desc-input">Details:</label><textarea id="side-quest-desc-input" placeholder="e.g., Cook a three-course meal from scratch"></textarea>
+        <label for="side-quest-gold-input">Gold Reward:</label><input type="number" id="side-quest-gold-input" value="10" min="0">
+        <label for="side-quest-xp-input">XP Reward:</label><input type="number" id="side-quest-xp-input" value="20" min="0">
+        <button id="submit-side-quest-btn" class="action-button add-button">Add Side Quest</button>
+    </div></div>
 
-    <audio id="sound-quest-complete" src="https://example.com/sounds/quest_complete.mp3" preload="auto"></audio>
-    <audio id="sound-level-up" src="https://example.com/sounds/level_up.mp3" preload="auto"></audio>
-    <audio id="sound-gold-gain" src="https://example.com/sounds/gold_gain.mp3" preload="auto"></audio>
-    <audio id="sound-habit-track" src="https://example.com/sounds/habit_track.mp3" preload="auto"></audio>
-    <audio id="sound-click" src="https://example.com/sounds/ui_click.mp3" preload="auto"></audio>
-    <audio id="sound-achievement" src="https://example.com/sounds/achievement_unlocked.mp3" preload="auto"></audio>
-    <audio id="sound-modal-open" src="https://example.com/sounds/modal_open.mp3" preload="auto"></audio>
+    <div id="add-habit-modal" class="modal"><div class="modal-content">
+        <span class="close-btn" data-modal-id="add-habit-modal">&times;</span>
+        <h3 class="modal-title">Cultivate a New Habit</h3>
+        <label for="habit-name-input">Habit Name:</label><input type="text" id="habit-name-input" placeholder="e.g., Morning Exercise">
+        <label for="habit-icon-input">Icon URL or local (images/name.png):</label><input type="text" id="habit-icon-input" value="images/gem_icon.png" placeholder="https://example.com/icon.png or images/sword.png">
+        <label for="habit-target-input">Daily Target (e.g., 1 for once, 30 for minutes):</label><input type="number" id="habit-target-input" value="1" min="1">
+        <button id="submit-habit-btn" class="action-button add-button">Add Habit</button>
+    </div></div>
+
+    <div id="add-custom-achievement-modal" class="modal"><div class="modal-content">
+        <span class="close-btn" data-modal-id="add-custom-achievement-modal">&times;</span>
+        <h3 class="modal-title">Record a Custom Feat</h3>
+        <label for="custom-ach-name-input">Feat Name:</label><input type="text" id="custom-ach-name-input" placeholder="e.g., Conquered Mount Fear">
+        <label for="custom-ach-desc-input">Description:</label><textarea id="custom-ach-desc-input" placeholder="How was this feat achieved?"></textarea>
+        <label for="custom-ach-icon-url-input">Icon Image URL (Optional):</label><input type="text" id="custom-ach-icon-url-input" placeholder="https://example.com/my-feat-icon.png">
+        <p class="form-hint">Image will be displayed as is. Ensure it's appropriately sized (e.g., 64x64px or 128x128px) and publicly accessible.</p>
+        <label class="checkbox-label"><input type="checkbox" id="custom-ach-manual-unlock-input" checked> Manually Mark as Unlocked Now</label>
+        <button id="submit-custom-ach-btn" class="action-button add-button">Add Custom Feat</button>
+    </div></div>
+
+
+    <audio id="sound-quest-complete" src="https://www.myinstants.com/media/sounds/quest-complete_1.mp3" preload="auto"></audio>
+    <audio id="sound-level-up" src="https://www.myinstants.com/media/sounds/levelup2.mp3" preload="auto"></audio>
+    <audio id="sound-gold-gain" src="https://www.myinstants.com/media/sounds/머니-01.mp3" preload="auto"></audio>
+    <audio id="sound-habit-track" src="https://www.myinstants.com/media/sounds/decidemp3.mp3" preload="auto"></audio>
+    <audio id="sound-click" src="https://www.myinstants.com/media/sounds/mouse-click-sound-effect-1.mp3" preload="auto"></audio>
+    <audio id="sound-achievement" src="https://www.myinstants.com/media/sounds/untitled_109.mp3" preload="auto"></audio>
+    <audio id="sound-modal-open" src="https://www.myinstants.com/media/sounds/quick-mechanical-keyboard.mp3" preload="auto"></audio>
+    <audio id="sound-pomodoro-work" src="https://www.myinstants.com/media/sounds/bike-horn-1.mp3" preload="auto"></audio>
+    <audio id="sound-pomodoro-break" src="https://www.myinstants.com/media/sounds/ding-sound-effect_1.mp3" preload="auto"></audio>
 
     <script src="script.js"></script>
 </body>
